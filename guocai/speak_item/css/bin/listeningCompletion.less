@@ -1,0 +1,74 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.listening-completion{
+    box-sizing: border-box;
+    font-size: 16px;
+    .size(@width:52px,@height:52px){
+        width: @width;
+        height: @height;
+    }
+    .center{
+        text-align: center;
+    }
+    header{
+        .showicon{
+            display: flex;
+            .hearicon{
+                .size();
+                background: url("../image/Earphone.gif");
+            }
+            .speakicon{
+                .size();
+                background: url("../image/MIC.gif");
+            }
+        }
+        .timer-container{
+            .size(@timeWidth,@timeHeight);
+        }
+    }
+
+    .explain{
+        margin:@itemIntroWordMg;
+    }
+    #stepnav{
+        margin-top:1rem;
+    }
+
+    .blank-cantainer{
+        min-width: 350px;
+        margin:auto 10rem; 
+        .br{
+            border-top: 1px solid #fde4d0;
+        }
+        .blank-title{
+            .center;
+        }
+        .blank-body{
+            background: #fde4d0;
+            padding: 0.8rem 0.5rem;
+            min-width: 350px;
+            li{
+                display: flex;
+                .blank-qus{
+                    // flex-grow:1;
+                }
+                .blank-ans{
+                    display: flex;
+                    margin-left: 5px;
+                    input{
+                        background: #fde4d0;
+                        outline: none;
+                        border: 0px;
+                        .center;
+                        flex-grow: 1;
+                    }
+                    flex-grow: 1;
+                    box-sizing: border-box;
+                    border-bottom: 1px solid black;
+                }
+            }
+        }
+    }
+}

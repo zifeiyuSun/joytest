@@ -1,0 +1,199 @@
+/*样式重置*/
+ul,ul li{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+html{
+  font-size: 16px;
+}
+body{
+  line-height: 1.6;
+  min-height: 100%;
+  overflow: auto;
+}
+input,textarea,button,a, audio{
+  outline:0;
+}
+textarea:hover,
+textarea:active,
+textarea:focus,
+input:hover,
+input:active,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active
+{
+  outline:0px !important;
+  -webkit-appearance:none;
+}
+select:hover,
+select:active,
+select:focus{
+  outline:0px !important;
+}
+input, button, select, optgroup, textarea{
+  line-height: normal;
+}
+body{
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently */
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Microsoft YaHei",Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3",  STXihei, STHeiti, Heiti, SimSun, sans-serif;
+}
+img{
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+.user-info,
+.rt-cont-main .annotator-wrapper,
+.item-mq-case .item-main-stem,
+.item-mq-case .subitem .item-head,
+.permit-input input{
+  -webkit-touch-callout: default;
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+.item p,
+label.option-cont{
+  margin: 0!important;
+}
+.item input::-ms-clear {  display: none; width : 0; height: 0; }
+.item input::-ms-reveal {  display: none; width : 0; height: 0; }
+/*样式重置 end*/
+
+/*全局变量*/
+@ReadItemColor:#84a674;//读题时间颜色
+@RecordColor:#0a5ee4;//录音时间颜色
+@prepareColor:#ecae05;//准备时间颜色
+@timeHeight:52px;//时间模块高度
+@timeWidth:140px;//时间模块宽度
+@itemPointUnAnswerd:#558ed5;//未答题样色
+@itemPointAnswerd:#d9d9d9;//已答题样色
+@itemIntroPd:0 5.4rem;//题干区域Padding值
+@itemIntroWordMg:0 5.4rem;//题干区域段落文字Margin值
+@itemListMg:15rem;//试题状态列表的Margin值
+/*全局变量 end*/
+
+/*全局自定义样式*/
+.timer-area{
+  text-align: center;
+  width: @timeWidth;
+  height: @timeHeight;
+  line-height: @timeHeight/2;
+  // position: absolute;
+  // top: 1rem;
+  // right: 1rem;
+  .timer-type{
+      height: @timeHeight/2;
+      font-size: 16px;
+      color: white;
+  }
+  .timer-time{
+      font-family: "微软雅黑";
+      font-size: 16px;
+      font-weight: bold;
+  }
+  &.ReadItemColor{
+      border: 1px solid @ReadItemColor;
+      .timer-type{
+          background: @ReadItemColor;
+          border-bottom: 1px solid @ReadItemColor;
+      }
+  }
+  &.RecordColor{
+      border: 1px solid @RecordColor;
+      .timer-type{
+          background: @RecordColor;
+          border-bottom: 1px solid @RecordColor;
+      }
+  }
+  &.prepareColor{
+      border: 1px solid @prepareColor;
+      .timer-type{
+          background: @prepareColor;
+          border-bottom: 1px solid @prepareColor;
+      }
+  }
+}
+
+.step-component{
+  display: flex;
+  justify-content: center;
+  .step-item{
+    margin: 0 0.5rem;
+    .point{
+      width: 1.26rem;
+      height: 1.26rem;
+      background: #fff;
+      border: 0.3rem solid #fff;
+      border-radius: 30px;
+      transition: all 0.3s;
+    }
+    .un-answerd{
+      border: 0.3rem solid @itemPointUnAnswerd;
+    }
+    .now-item{
+      background: @itemPointUnAnswerd;
+      border: 0.3rem solid @itemPointUnAnswerd;
+    }
+    .is-answerd{
+      background: @itemPointAnswerd;
+      border: 0.3rem solid @itemPointAnswerd;
+    }
+    p{
+      margin: 0.4rem 0 0 0;
+      padding: 0;
+      text-align: center;
+    }
+  }
+}
+.second-text-bold{
+  font-size: 1.8rem;
+  margin: 0 0.4rem;
+  font-weight: 800;
+}
+/*右上角时间状态及gif样式
+结构
+<div class="item-info">
+  <div>图标区</div>
+  <div>时间区</div>
+</div>
+*/
+.item-info{
+  margin: 1rem 0;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 1.6rem;
+  &>div:nth-child(1){
+    margin-right: 0.6rem;
+  }
+  &>div:nth-child(2){
+    width: 142px;
+    height: 58px;
+  }
+}
+/*右上角时间状态及gif样式 end*/
+/*全局自定义样式 end*/
+@import "bin/listeningCompletion";
+@import "bin/listeningMultiple";
+@import "bin/listeningVideo";
+@import "bin/listeningTest_MP1T4";

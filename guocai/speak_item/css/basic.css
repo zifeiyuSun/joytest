@@ -1,0 +1,300 @@
+/*样式重置*/
+ul,
+ul li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+html {
+  font-size: 16px;
+}
+body {
+  line-height: 1.6;
+}
+input,
+textarea,
+button,
+a,
+audio {
+  outline: 0;
+}
+textarea:hover,
+textarea:active,
+textarea:focus,
+input:hover,
+input:active,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active {
+  outline: 0px !important;
+  -webkit-appearance: none;
+}
+select:hover,
+select:active,
+select:focus {
+  outline: 0px !important;
+}
+input,
+button,
+select,
+optgroup,
+textarea {
+  line-height: normal;
+}
+body {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Chrome/Safari/Opera */
+  -khtml-user-select: none;
+  /* Konqueror */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently */
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  font-family: "Microsoft YaHei", Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", STXihei, STHeiti, Heiti, SimSun, sans-serif;
+}
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+.user-info,
+.rt-cont-main .annotator-wrapper,
+.item-mq-case .item-main-stem,
+.item-mq-case .subitem .item-head,
+.permit-input input {
+  -webkit-touch-callout: default;
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+.item p,
+label.option-cont {
+  margin: 0!important;
+}
+.item input::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+.item input::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+/*样式重置 end*/
+/*全局变量*/
+/*全局变量 end*/
+/*全局自定义样式*/
+.timer-area {
+  text-align: center;
+  width: 140px;
+  height: 52px;
+  line-height: 26px;
+}
+.timer-area .timer-type {
+  height: 26px;
+  font-size: 16px;
+  color: white;
+}
+.timer-area .timer-time {
+  font-family: "微软雅黑";
+  font-size: 16px;
+  font-weight: bold;
+}
+.timer-area.ReadItemColor {
+  border: 1px solid #84a674;
+}
+.timer-area.ReadItemColor .timer-type {
+  background: #84a674;
+  border-bottom: 1px solid #84a674;
+}
+.timer-area.RecordColor {
+  border: 1px solid #0a5ee4;
+}
+.timer-area.RecordColor .timer-type {
+  background: #0a5ee4;
+  border-bottom: 1px solid #0a5ee4;
+}
+.timer-area.prepareColor {
+  border: 1px solid #ecae05;
+}
+.timer-area.prepareColor .timer-type {
+  background: #ecae05;
+  border-bottom: 1px solid #ecae05;
+}
+.step-component {
+  display: flex;
+  justify-content: center;
+}
+.step-component .step-item {
+  margin: 0 0.5rem;
+}
+.step-component .step-item .point {
+  width: 1.26rem;
+  height: 1.26rem;
+  background: #fff;
+  border: 0.3rem solid #fff;
+  border-radius: 30px;
+  transition: all 0.3s;
+}
+.step-component .step-item .un-answerd {
+  border: 0.3rem solid #558ed5;
+}
+.step-component .step-item .now-item {
+  background: #558ed5;
+  border: 0.3rem solid #558ed5;
+}
+.step-component .step-item .is-answerd {
+  background: #d9d9d9;
+  border: 0.3rem solid #d9d9d9;
+}
+.step-component .step-item p {
+  margin: 0.4rem 0 0 0;
+  padding: 0;
+  text-align: center;
+}
+.second-text-bold {
+  font-size: 1.8rem;
+  margin: 0 0.4rem;
+  font-weight: 800;
+}
+/*右上角时间状态及gif样式
+结构
+<div class="item-info">
+  <div>图标区</div>
+  <div>时间区</div>
+</div>
+*/
+.item-info {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 1.6rem;
+}
+.item-info > div:nth-child(1) {
+  margin-right: 0.6rem;
+}
+.item-info > div:nth-child(2) {
+  width: 142px;
+  height: 58px;
+}
+/*右上角时间状态及gif样式 end*/
+/*全局自定义样式 end*/
+body {
+  margin: 0;
+  padding: 0;
+}
+.listening-completion {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+.listening-completion .center {
+  text-align: center;
+}
+.listening-completion header .showicon {
+  display: flex;
+}
+.listening-completion header .showicon .hearicon {
+  width: 52px;
+  height: 52px;
+  background: url("../image/Earphone.gif");
+}
+.listening-completion header .showicon .speakicon {
+  width: 52px;
+  height: 52px;
+  background: url("../image/MIC.gif");
+}
+.listening-completion header .timer-container {
+  width: 140px;
+  height: 52px;
+}
+.listening-completion .explain {
+  margin: 0 5.4rem;
+}
+.listening-completion #stepnav {
+  margin-top: 1rem;
+}
+.listening-completion .blank-cantainer {
+  min-width: 350px;
+  margin: auto 10rem;
+}
+.listening-completion .blank-cantainer .br {
+  border-top: 1px solid #fde4d0;
+}
+.listening-completion .blank-cantainer .blank-title {
+  text-align: center;
+}
+.listening-completion .blank-cantainer .blank-body {
+  background: #fde4d0;
+  padding: 0.8rem 0.5rem;
+  min-width: 350px;
+}
+.listening-completion .blank-cantainer .blank-body li {
+  display: flex;
+}
+.listening-completion .blank-cantainer .blank-body li .blank-ans {
+  display: flex;
+  margin-left: 5px;
+  flex-grow: 1;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+}
+.listening-completion .blank-cantainer .blank-body li .blank-ans input {
+  background: #fde4d0;
+  outline: none;
+  border: 0px;
+  text-align: center;
+  flex-grow: 1;
+}
+.listening-multiple .item-intro {
+  padding: 0 5.4rem;
+}
+.listening-multiple .item-intro p {
+  margin: 0 0 2rem 0;
+  padding: 0;
+  font-weight: 600;
+}
+.listening-multiple #step_list {
+  margin-top: 15rem;
+}
+.listening-video {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-size: .900rem;
+  font-weight: 600;
+}
+.listening-video .ItemNotice {
+  padding: 0 5.4rem;
+  margin: 0 5.4rem;
+}
+.listening-video #prepareNotice {
+  font-size: .900rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center ;
+  color: red;
+  margin: 0 5.4rem;
+}
+.listening-video .VideoBox {
+  display: flex;
+  justify-content: center ;
+}

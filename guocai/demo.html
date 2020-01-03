@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>理财计算器</title>
+  <style type="text/css">
+    
+
+
+  </style>
+</head>
+
+<body>
+  <div>
+    <button id="startRecord">开始录音</button id="stopRecord">
+    <button id="stopRecord">停止录音</button>
+    <audio id="audio" controls></audio>
+  </div>
+  <script src="./RecordRTC.js"></script>
+  <script src="./recordUtil.js"></script>
+  <script src="./joyBridge.js"></script>
+  <script type="text/javascript">
+  window.onload = function(){
+    const jb = window.joyBridge;
+    let item;
+
+    jb.init(request_submit);
+
+    jb.get_current_item().then(function(data){
+      item = data;
+      console.log(data);
+    });
+
+    async function request_submit() {
+      // 提交录音，发送答案
+      const itemRes = {
+            "item_id": item.id,
+            "annotation": { 
+              "item_id": item.id,
+              "data": ["jlfkajsd", "", "32909rer"]
+            },
+            "answer": ""
+          };
+      if(joyRecordUtil.audioRecording) {
+        const blob = await jb.get_blob();
+        const file = await jb.post_audio_blob(blob);
+        itemRes.answer = file.filename;
+        joyRecordUtil.audioRecording = false;
+      }
+      return itemRes;
+    }
+
+    const startBtn = document.getElementById("startRecord");
+    const stopBtn = document.getElementById("stopRecord");
+
+    // 开始录制
+    startBtn.onclick = function(){
+      const mediaDevices = jb.mediaDevices;
+      mediaDevices.getUserMedia({audio: true})
+      .then(function(stream) {
+        /* use the stream */
+        jb.start_record(stream);
+      })
+      .catch(function(err) {
+        /* handle the error */
+        console.log(err);
+      });
+      
+    }
+
+    // 停止录制
+    stopBtn.onclick = function(){
+      const itemRes = {
+        "item_id": "e2134188-c608-329c-f3fc-58939cb43764",
+        "annotation": { 
+          "item_id": "e2134188-c608-329c-f3fc-58939c",
+          "data": ["jlfkajsd", "", "32909rer"]
+        }
+      };
+
+      // 提交录音，发送答案
+      jb.stop_record(itemRes).then(function(filename){
+        const audioDom = document.getElementById("audio");
+        audioDom.src = "/seat/rfile/" + filename;
+        //jb.next();
+      });
+    }
+  }
+  </script>
+</body>
+</html>
