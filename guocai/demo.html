@@ -37,20 +37,21 @@
     async function request_submit() {
       // 提交录音，发送答案
       const itemRes = {
-            "item_id": item.id,
-            "annotation": { 
-              "item_id": item.id,
-              "data": ["jlfkajsd", "", "32909rer"]
-            },
-            "answer": ""
-          };
-      if(joyRecordUtil.audioRecording) {
-        const blob = await jb.get_blob();
-        const file = await jb.post_audio_blob(blob);
-        itemRes.answer = file.filename;
-        joyRecordUtil.audioRecording = false;
-      }
-      return itemRes;
+                "item_id": item.id,
+                "annotation": { 
+                  "item_id": item.id,
+                  "data": ["jlfkajsd", "", "32909rer"]
+                },
+                "answer": ""
+              };
+        if(joyRecordUtil.audioRecording) {
+          const blob = await jb.get_blob();
+          const file = await jb.post_audio_blob(blob);
+          itemRes.answer = file.filename;
+          joyRecordUtil.audioRecording = false;
+        }
+        return itemRes;
+      
     }
 
     const startBtn = document.getElementById("startRecord");
@@ -58,7 +59,16 @@
 
     // 开始录制
     startBtn.onclick = function(){
-      jb.start_record();
+      const mediaDevices = jb.mediaDevices;
+      mediaDevices.getUserMedia({audio: true})
+      .then(function(stream) {
+        /* use the stream */
+        jb.start_record(stream);
+      })
+      .catch(function(err) {
+        /* handle the error */
+        console.log(err);
+      });
     }
 
     // 停止录制

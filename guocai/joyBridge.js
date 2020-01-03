@@ -4,7 +4,19 @@ window.joyBridge = {
     // 初始化成功，返回值为promise
     init:function(callback) {
 
-        if(callback) this.parent.get_iframe_submit = callback;
+        const getItemRes = callback;
+        window.addEventListener("message", function(event){
+            const data = JSON.parse(event.data);
+            switch(data.type){
+              case "request_submit":
+                const itemRes = getItemRes();
+                const data = { type: "request_submit", itemRes: itemRes}
+                window.parent.postMessage(JSON.stringify(data), '*');
+                
+                // console.log(data);
+                break;
+            }
+        })
         return this.parent.init();
     },
 
