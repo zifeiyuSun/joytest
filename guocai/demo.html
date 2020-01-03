@@ -58,25 +58,15 @@
 
     // 开始录制
     startBtn.onclick = function(){
-      const mediaDevices = jb.mediaDevices;
-      mediaDevices.getUserMedia({audio: true})
-      .then(function(stream) {
-        /* use the stream */
-        jb.start_record(stream);
-      })
-      .catch(function(err) {
-        /* handle the error */
-        console.log(err);
-      });
-      
+      jb.start_record();
     }
 
     // 停止录制
     stopBtn.onclick = function(){
       const itemRes = {
-        "item_id": "e2134188-c608-329c-f3fc-58939cb43764",
+        "item_id": item.id,
         "annotation": { 
-          "item_id": "e2134188-c608-329c-f3fc-58939c",
+          "item_id": item.id,
           "data": ["jlfkajsd", "", "32909rer"]
         }
       };

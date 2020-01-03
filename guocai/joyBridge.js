@@ -43,20 +43,20 @@ window.joyBridge = {
         });
     },
 
-    post_audio_blob: function(blob) {
+    // 停止录音,返回值为promise,异步执行成功返回音频url
+    stop_record: async function(itemRes) {
+        const blob = await this.__get_blob();
+        const file = await this.__post_audio_blob(blob);
+        itemRes.answer = file.filename;
+        return this.submit_response(itemRes);
+    },
+
+    __post_audio_blob: function(blob) {
         return this.parent.post_audio_blob(blob);
     },
 
-    get_blob: async function(){
+    __get_blob: async function(){
         return await joyRecordUtil.stopRecordAudio()
-    },
-
-    // 停止录音,返回值为promise,异步执行成功返回音频url
-    stop_record: async function(itemRes) {
-        const blob = await this.get_blob();
-        const file = await this.post_audio_blob(blob);
-        itemRes.answer = file.filename;
-        return this.submit_response(itemRes);
     }
 
 };
