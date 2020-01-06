@@ -10,17 +10,20 @@ window.joyBridge = {
             const data = JSON.parse(event.data);
             switch(data.type){
               case "RequestSubmit":
+                if(!opts.get_item_response) return;
                 const itemRes = await opts.get_item_response();
                 // window.parent.postMessage(JSON.stringify(data), '*');
                 _this.submit_response(itemRes, "RequestSubmit");
                 // console.log(data);
                 break;
             case "PauseExam":
+                if(!opts.pause_exam) return;
                 // 考试机暂停考试通知
                 opts.pause_exam();
                 break;
 
             case "ResumeExam":
+                if(!opts.resume_exam) return;
                 // 考试机继续考试通知
                 opts.resume_exam();
                 break;
