@@ -25,6 +25,11 @@
   <script type="text/javascript">
   window.onload = function(){
     const jb = window.joyBridge;
+    const opts = {
+      requst_submit: request_submit,
+      pause_exam: "",
+      continue_exam: ""
+    };
     let item;
 
     jb.init(request_submit);

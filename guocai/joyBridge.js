@@ -2,7 +2,7 @@ window.joyBridge = {
     parent: window.parent.joyBridge,
     mediaDevices: joyRecordUtil.getMediaDevices(),
     // 初始化成功，返回值为promise
-    init:function(callback) {
+    init:function(opts) {
 
         const getItemRes = callback;
         window.addEventListener("message", function(event){
@@ -11,9 +11,18 @@ window.joyBridge = {
               case "request_submit":
                 const itemRes = getItemRes();
                 const data = { type: "request_submit", itemRes: itemRes}
-                window.parent.postMessage(JSON.stringify(data), '*');
-                
+                // window.parent.postMessage(JSON.stringify(data), '*');
+                opts.requst_submit();
                 // console.log(data);
+                break;
+            case "pause_exam":
+                // 考试机暂停考试通知
+                opts.pause_exam();
+                break;
+
+            case "continue_exam":
+                // 考试机继续考试通知
+                opts.continue_exam();
                 break;
             }
         })
@@ -49,26 +58,26 @@ window.joyBridge = {
     },
 
     // 开始录音,返回值为promise 
-    start_record: function() {
-        return this.parent.start_record().then(function(stream){
+    start_record: function(stream) {
+        return this.parent.start_record(stream).then(function(stream){
             joyRecordUtil.startRecordAudio(stream);
         });
     },
 
-    // 停止录音,返回值为promise,异步执行成功返回音频url
-    stop_record: async function(itemRes) {
-        const blob = await this.__get_blob();
-        const file = await this.__post_audio_blob(blob);
-        itemRes.answer = file.filename;
-        return this.submit_response(itemRes);
-    },
-
-    __post_audio_blob: function(blob) {
+    post_audio_blob: function(blob) {
         return this.parent.post_audio_blob(blob);
     },
 
-    __get_blob: async function(){
+    get_blob: async function(){
         return await joyRecordUtil.stopRecordAudio()
+    },
+
+    // 停止录音,返回值为promise,异步执行成功返回音频url
+    stop_record: async function(itemRes) {
+        const blob = await this.get_blob();
+        const file = await this.post_audio_blob(blob);
+        itemRes.answer = file.filename;
+        return this.submit_response(itemRes);
     }
 
 };
