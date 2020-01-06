@@ -120,7 +120,7 @@
           "marked": false,
           "annotation":["jfkajksd", "", "faksdjf"],
           "answer": {
-            "value: "https://cdn.eztest.org/media/attachment/**.webm"
+            "value: "**.webm"
           }
         }
       ]
