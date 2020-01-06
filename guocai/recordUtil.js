@@ -43,6 +43,7 @@ window.joyRecordUtil = {
 
   closeStream: function() {
     let stream = this.stream;
+    if(!stream) return;
     stream.getAudioTracks().forEach(track => track.stop());
     stream.getVideoTracks().forEach(track => track.stop());
   }
