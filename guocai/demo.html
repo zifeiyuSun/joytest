@@ -25,23 +25,12 @@
   <script type="text/javascript">
   window.onload = function(){
     const jb = window.joyBridge;
-    const opts = {
-      requst_submit: request_submit,
-      pause_exam: "",
-      continue_exam: ""
-    };
     let item;
-
-    jb.init(request_submit);
-
-    jb.get_current_item().then(function(data){
-      item = data;
-      console.log(data);
-    });
-
-    async function request_submit() {
-      // 提交录音，发送答案
-      const itemRes = {
+    
+    const opts = {
+      get_item_response: async function() {
+        // 提交录音，发送答案
+        const itemRes = {
                 "item_id": item.id,
                 "annotation": { 
                   "item_id": item.id,
@@ -57,7 +46,18 @@
         }
         return itemRes;
       
-    }
+    },
+      pause_exam: function(){},
+      resume_exam: function(){}
+    };
+    
+
+    jb.init(opts);
+
+    jb.get_current_item().then(function(data){
+      item = data;
+      console.log(data);
+    });
 
     const startBtn = document.getElementById("startRecord");
     const stopBtn = document.getElementById("stopRecord");

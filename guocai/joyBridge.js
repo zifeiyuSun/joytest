@@ -3,26 +3,26 @@ window.joyBridge = {
     mediaDevices: joyRecordUtil.getMediaDevices(),
     // 初始化成功，返回值为promise
     init:function(opts) {
+        const _this = this;
+        window.addEventListener("message", async function(event){
+            if(!event.data) return;
 
-        const getItemRes = callback;
-        window.addEventListener("message", function(event){
             const data = JSON.parse(event.data);
             switch(data.type){
-              case "request_submit":
-                const itemRes = getItemRes();
-                const data = { type: "request_submit", itemRes: itemRes}
+              case "RequestSubmit":
+                const itemRes = await opts.get_item_response();
                 // window.parent.postMessage(JSON.stringify(data), '*');
-                opts.requst_submit();
+                _this.submit_response(itemRes, "RequestSubmit");
                 // console.log(data);
                 break;
-            case "pause_exam":
+            case "PauseExam":
                 // 考试机暂停考试通知
                 opts.pause_exam();
                 break;
 
-            case "continue_exam":
+            case "ResumeExam":
                 // 考试机继续考试通知
-                opts.continue_exam();
+                opts.resume_exam();
                 break;
             }
         })
@@ -35,8 +35,8 @@ window.joyBridge = {
     },
 
     // 提交当前试题答案，返回值为promise
-    submit_response: function(itemRes) {
-        return this.parent.submit_response(itemRes);
+    submit_response: function(itemRes, type) {
+        return this.parent.update_response(itemRes, type);
     },
 
     // 获取当前试题数据，返回值为promise，异步执行成功返回当前试题结构
