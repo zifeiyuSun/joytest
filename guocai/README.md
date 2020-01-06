@@ -158,7 +158,7 @@
 
  说明：所有调用接口都在window.joyBridge上
 
-## 1. init(callback)
+## 1. init(opts)
 
    数据加载好之后运行，通知考试机iframe已经初始化成功。
 
