@@ -167,26 +167,32 @@
 ```js 
   const jb = window.joyBridge;
   let item;
-  jb.init(request_submit);
+  const opts = {
+      get_item_response: async function() {
+        // 提交录音，发送答案
+        const itemRes = {
+                "item_id": item.id,
+                "annotation": { 
+                  "item_id": item.id,
+                  "data": ["jlfkajsd", "", "32909rer"]
+                },
+                "answer": ""
+              };
+        if(joyRecordUtil.audioRecording) {
+          const blob = await jb.get_blob();
+          const file = await jb.post_audio_blob(blob);
+          itemRes.answer = file.filename;
+          joyRecordUtil.audioRecording = false;
+        }
+        return itemRes;
+      
+    },
+      pause_exam: function(){},
+      resume_exam: function(){}
+    };
+    
 
-  async function request_submit() {
-    // 提交录音，发送答案
-    const itemRes = {
-          "item_id": item.id,
-          "annotation": { 
-            "item_id": item.id,
-            "data": ["jlfkajsd", "", "32909rer"]
-          },
-          "answer": ""
-        };
-    if(joyRecordUtil.audioRecording) {
-      const blob = await jb.get_blob();
-      const file = await jb.post_audio_blob(blob);
-      itemRes.answer = file.filename;
-      joyRecordUtil.audioRecording = false;
-    }
-    return itemRes;
-  }
+    jb.init(opts);
 ```
 
 ## 2. start_item()
