@@ -187,8 +187,12 @@
         return itemRes;
       
     },
-      pause_exam: function(){},
-      resume_exam: function(){}
+      pause_exam: function(){
+        // todo
+      },
+      resume_exam: function(){
+        // todo
+      }
     };
     
 
