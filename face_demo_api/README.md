@@ -2,7 +2,7 @@
 | fn name                   | Description          |
 | --------------------- | -------------------|
 | getEntryPhoto | Base64, 不存在返回空字符串 |
-| startExam | 考前试麦flag, 值为：“pre_test”, 此时itemRes传入null即可             |
+| startExam | 执行开始考试，进入答题界面             |
 | isExamValid | 是否场次已经可以开考，如果没有开考，给出提示，不能执行startExam             |
  ```js
   window.joyFaceApi = {
