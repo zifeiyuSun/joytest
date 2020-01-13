@@ -5,7 +5,7 @@
 | startExam | 执行开始考试，进入答题界面             |
 | isExamValid | 是否场次已经可以开考，如果没有开考，给出提示，不能执行startExam             |
  ```js
-  window.joyFaceApi = {
+  window.joyFaceCheck = {
       getEntryPhoto: function() {
         const entryInfo = window.JTCustom.getEntryInfo();
         if(entryInfo.personal) {
