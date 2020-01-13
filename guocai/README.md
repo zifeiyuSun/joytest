@@ -244,8 +244,8 @@
  开始录音，返回值为promise, 异步执行成功返回音频url
 
 | parameter name                   | Description          |   type  |
-| --------------------- | -------------------- ------- | -------- |
-| itemRes | 当前试题response数据 |object|
+| --------------------- | -------------------| -------- |
+| itemRes | 当前试题response数据                       |object|
 | type | 考前试麦flag, 值为：“pre_test”, 此时itemRes传入null即可             |  string |
 
 ```js
