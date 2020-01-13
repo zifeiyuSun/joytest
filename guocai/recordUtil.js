@@ -46,6 +46,16 @@ window.joyRecordUtil = {
     if(!stream) return;
     stream.getAudioTracks().forEach(track => track.stop());
     stream.getVideoTracks().forEach(track => track.stop());
+  },
+
+  toURL: async function(){
+    await this.recordRTC.stopRecording();
+    this.audioRecording = false;
+    this.closeStream();
+    const url = await this.recordRTC.getDataURL();
+    console.log(url);
+    return url;
+
   }
   
 }

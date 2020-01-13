@@ -1,6 +1,7 @@
 window.joyBridge = {
     parent: window.parent.joyBridge,
     mediaDevices: joyRecordUtil.getMediaDevices(),
+    toURL: joyRecordUtil.toURL,
     // 初始化成功，返回值为promise
     init:function(opts) {
         const _this = this;
@@ -75,8 +76,11 @@ window.joyBridge = {
         return await joyRecordUtil.stopRecordAudio()
     },
 
-    // 停止录音,返回值为promise,异步执行成功返回音频url
-    stop_record: async function(itemRes) {
+    // 停止录音,返回值为promise,异步执行成功返回音频url; type: pre_test(考前测试)
+    stop_record: async function(itemRes, type) {
+        if(type === "pre_test"){
+            return this.toURL();
+        }
         const blob = await this.get_blob();
         const file = await this.post_audio_blob(blob);
         itemRes.answer = file.filename;
