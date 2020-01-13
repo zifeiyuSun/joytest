@@ -20,7 +20,7 @@
       },
 
       // 是否管理机已经开始考试
-      examValid: function() {
+      isExamValid: function() {
         const session = window.JTCustom.getSession();
         return session.status != "open";
       }
