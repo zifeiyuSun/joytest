@@ -8,7 +8,7 @@
   window.joyFaceCheck = {
       getEntryPhoto: function() {
         const entryInfo = window.JTCustom.getEntryInfo();
-        if(entryInfo.personal) {
+        if(entryInfo.personal && entryInfo.personal.registration_photo) {
           return entryInfo.personal.registration_photo;
         }
         return "";
