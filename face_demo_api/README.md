@@ -6,12 +6,12 @@
 | isExamValid | 是否场次已经可以开考，如果没有开考，给出提示，不能执行startExam             |
  ```js
   window.joyFaceCheck = {
-      getEntryPhoto: function() {
+      getEntryInfo: function() {
         const entryInfo = window.JTCustom.getEntryInfo();
-        if(entryInfo.personal && entryInfo.personal.registration_photo) {
-          return entryInfo.personal.registration_photo;
+        if(entryInfo.personal) {
+          return entryInfo.personal;
         }
-        return "";
+        return null;
       },
 
       // 开始考试
