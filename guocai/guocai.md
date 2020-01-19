@@ -120,7 +120,7 @@
           "marked": false,
           "annotation":["jfkajksd", "", "faksdjf"],
           "answer": {
-            "value: "***.webm"
+            "url: "***.webm"
           }
         }
       ]
@@ -148,7 +148,7 @@
     "retry_count": 1,
     "annotation":["jfkajksd", "", "faksdjf"],
     "answer": {
-      "value": "https://cdn.eztest.org/media/attachment/8709352/92e38d3e-43df-4305-442d-0dd3fff987e6_ctvfdglu.webm"
+      "url": "https://cdn.eztest.org/media/attachment/8709352/92e38d3e-43df-4305-442d-0dd3fff987e6_ctvfdglu.webm"
     }
 }
 ```

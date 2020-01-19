@@ -4,6 +4,7 @@
 | getEntryPhoto | Base64, 不存在返回空字符串 |
 | startExam | 执行开始考试，进入答题界面             |
 | isExamValid | 是否场次已经可以开考，如果没有开考，给出提示，不能执行startExam             |
+
  ```js
   window.joyFaceCheck = {
       getEntryInfo: function() {
